@@ -1,0 +1,12 @@
+components:
+- components:
+  - layout_properties: {}
+    name: edit_row
+    properties: {background: 'theme:Primary Container', icon: 'fa:pencil', text: ''}
+    type: Button
+  layout_properties: {column: VIDMNQ}
+  name: flow_panel_1
+  properties: {}
+  type: FlowPanel
+container: {type: DataRowPanel}
+is_package: true
