@@ -1,6 +1,7 @@
 components:
 - components:
-  - layout_properties: {}
+  - event_bindings: {click: edit_row_click}
+    layout_properties: {}
     name: edit_row
     properties: {background: 'theme:Primary Container', icon: 'fa:pencil', text: ''}
     type: Button
