@@ -14,4 +14,5 @@ class RowTemplate1(RowTemplate1Template):
     # Any code you write here will run before the form opens.
 
   def edit_row_click(self, **event_args):
+    print("het doet het")
     self.parent.raise_event('x-edit-movie', movie=self.item)
