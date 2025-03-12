@@ -13,6 +13,11 @@ components:
       - {data_key: year, id: OJLQEN, title: Year}
       - {data_key: column_1, id: VIDMNQ, title: ''}
     type: DataGrid
+  - event_bindings: {click: get_profile_click}
+    layout_properties: {grid_position: 'LCUVUJ,AKAKWJ'}
+    name: get_profile
+    properties: {text: weergeef profiles}
+    type: Button
   - event_bindings: {click: add_movie_click}
     layout_properties: {grid_position: 'LCUVUJ,QISCQN'}
     name: add_movie

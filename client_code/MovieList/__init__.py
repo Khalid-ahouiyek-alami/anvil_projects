@@ -43,26 +43,30 @@ class MovieList(MovieListTemplate):
       #refresh the Data Grid
       self.repeating_panel_1.items = app_tables.movies.search()
 
-  all_profiles = anvil.server.call('get_userprofiles')
+ 
 
-numlen = len(all_profiles)
+  def get_profile_click(self, **event_args):
+    all_profiles = anvil.server.call('get_userprofiles')
 
-for i in range(0,numlen):
+    numlen = len(all_profiles)
 
-    profile_doc = all_profiles[i]['doc']
+    for i in range(0,numlen):
+      print(all_profiles[i]['doc'])
+      profile_doc = all_profiles[i]['doc']
+      
+      if '_id' in profile_doc:
+    
+        username = anvil.server.call('decode', str(profile_doc['_id']))
+    
+      if "EMAIL" in profile_doc:
+    
+        EMAIL = anvil.server.call('decode', str(profile_doc['EMAIL']))
+    
+      if "FIRSTNAME" in profile_doc:
+    
+        FIRSTNAME = anvil.server.call('decode',  str(profile_doc['FIRSTNAME']))
+    
+      if "SURNAME" in profile_doc:
+    
+        SURNAME = anvil.server.call('decode',  str(profile_doc['SURNAME']))
 
-              if '_id' in profile_doc:
-
-                            username = sglic.decode(qglobals.NG_KEY, str(profile_doc['_id']))
-
-              if "EMAIL" in profile_doc:
-
-                            EMAIL = sglic.decode(qglobals.NG_KEY, str(profile_doc['EMAIL']))
-
-              if "FIRSTNAME" in profile_doc:
-
-                            FIRSTNAME = sglic.decode(qglobals.NG_KEY, str(profile_doc['FIRSTNAME']))
-
-              if "SURNAME" in profile_doc:
-
-                            SURNAME = sglic.decode(qglobals.NG_KEY, str(profile_doc['SURNAME']))

@@ -1,2 +1,3 @@
 cloudant
-base64
+bcrypt
+CouchDB

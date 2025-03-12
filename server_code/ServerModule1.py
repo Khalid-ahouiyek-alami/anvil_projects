@@ -27,22 +27,10 @@ def update_movie(movie, movie_data):
 def delete_movie(movie):
   movie.delete()
 
-import base64
-
-from cloudant.client import Cloudant
-
  
-
-licfile = anvil.secrets.get_secret('licfile')
-
-lickey = anvil.secrets.get_secret('lickey')
-
-authenticated_callable = anvil.server.callable(require_user=True)
-
- 
-
-def decode(key, enc):
-
+@anvil.server.callable
+def decode(enc):
+    key = anvil.secrets.get_secret('lickey')
     dec = []
 
     enc2 = base64.urlsafe_b64decode(enc)
@@ -66,14 +54,15 @@ def decode(key, enc):
 @anvil.server.callable
 
 def get_userprofiles():
-    declicense = decode(lickey, licfile)
-    licwords = str(declicense).split('[---]')
-    sgaccount = licwords[7]
-    dbconfigkey = licwords[17]
-    dbconfigpwd = licwords[26]
-    client = Cloudant(dbconfigkey, dbconfigpwd, account=sgaccount)
-    client.connect()
-    my_db = client['userprofiles']
-    docs_found = my_db.all_docs(include_docs=True)
+  licfile = anvil.secrets.get_secret('licfile')
+  declicense = decode(licfile)
+  licwords = str(declicense).split('[---]')
+  sgaccount = licwords[7]
+  dbconfigkey = licwords[17]
+  dbconfigpwd = licwords[26]
+  client = Cloudant(dbconfigkey, dbconfigpwd, account=sgaccount)
+  client.connect()
+  my_db = client['userprofiles']
+  docs_found = my_db.all_docs(include_docs=True)
 
-    return docs_found['rows']
+  return docs_found['rows']
