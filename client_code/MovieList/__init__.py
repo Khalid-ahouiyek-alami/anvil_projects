@@ -55,18 +55,14 @@ class MovieList(MovieListTemplate):
       profile_doc = all_profiles[i]['doc']
       
       if '_id' in profile_doc:
-    
         username = anvil.server.call('decode', str(profile_doc['_id']))
     
       if "EMAIL" in profile_doc:
-    
         EMAIL = anvil.server.call('decode', str(profile_doc['EMAIL']))
     
       if "FIRSTNAME" in profile_doc:
-    
         FIRSTNAME = anvil.server.call('decode',  str(profile_doc['FIRSTNAME']))
     
       if "SURNAME" in profile_doc:
-    
         SURNAME = anvil.server.call('decode',  str(profile_doc['SURNAME']))
 
