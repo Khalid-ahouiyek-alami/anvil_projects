@@ -23,7 +23,7 @@ class MovieList(MovieListTemplate):
       #add the movie to the Data Table with the filled in information
       anvil.server.call('add_movie', item)
       #refresh the Data Grid
-      self.repeating_panel_1.items = app_tables.movies.search()
+      self.repeating_panel_1.items = app_tables.movies.search()  
   
   def edit_movie(self, movie, **event_args):
     print("het doet het")#movie is the row from the Data Table
