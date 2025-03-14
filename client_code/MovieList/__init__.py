@@ -48,21 +48,4 @@ class MovieList(MovieListTemplate):
   def get_profile_click(self, **event_args):
     all_profiles = anvil.server.call('get_userprofiles')
 
-    numlen = len(all_profiles)
-
-    for i in range(0,numlen):
-      print(all_profiles[i]['doc'])
-      profile_doc = all_profiles[i]['doc']
-      
-      if '_id' in profile_doc:
-        username = anvil.server.call('decode', str(profile_doc['_id']))
-    
-      if "EMAIL" in profile_doc:
-        EMAIL = anvil.server.call('decode', str(profile_doc['EMAIL']))
-    
-      if "FIRSTNAME" in profile_doc:
-        FIRSTNAME = anvil.server.call('decode',  str(profile_doc['FIRSTNAME']))
-    
-      if "SURNAME" in profile_doc:
-        SURNAME = anvil.server.call('decode',  str(profile_doc['SURNAME']))
 
